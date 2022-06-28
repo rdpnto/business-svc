@@ -1,20 +1,31 @@
+using BusinessSvc.Domain.Constants;
+using BusinessSvc.IoC.Extensions;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
+using System.Reflection;
 
 namespace BusinessSvc.Api
 {
     public class Startup
     {
-        readonly IConfiguration Configuration;
+        readonly IConfiguration _configuration;
 
-        public Startup(IConfiguration configuration) => Configuration = configuration;
+        public Startup(IConfiguration configuration) => _configuration = configuration;
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMediatR(typeof(object));
+            //services.AddDbConnection();
+            services.AddSwaggerGen(c => c.SwaggerDoc(ApiConstants.API_VERSION, GetDocumentation()));
+            services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -22,6 +33,8 @@ namespace BusinessSvc.Api
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
@@ -30,6 +43,20 @@ namespace BusinessSvc.Api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public OpenApiInfo GetDocumentation()
+        {
+            return new OpenApiInfo()
+            {
+                Title = ApiConstants.API_TITLE,
+                Description = ApiConstants.API_DESCRIPTION,
+                Contact = new OpenApiContact()
+                {
+                    Name = ApiConstants.DEV_NAME,
+                    Email = ApiConstants.DEV_EMAIL
+                }
+            };
         }
     }
 }

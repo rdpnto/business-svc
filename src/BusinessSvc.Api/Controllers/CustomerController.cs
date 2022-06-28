@@ -7,5 +7,10 @@ namespace BusinessSvc.Api.Controllers
     [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("ok");
+        }
     }
 }
