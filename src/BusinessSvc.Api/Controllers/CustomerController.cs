@@ -1,10 +1,8 @@
 ﻿using BusinessSvc.Application.Commands.AddCustomer;
-using BusinessSvc.Application.Commands.SendEmail;
 using BusinessSvc.Application.Queries.CustomerOrders;
 using BusinessSvc.Application.Queries.ListCustomers;
 using BusinessSvc.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
