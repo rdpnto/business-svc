@@ -22,10 +22,9 @@ namespace BusinessSvc.Api
         {
             services.AddControllers();
             services.AddMediatR(typeof(object));
-            //services.AddDbConnection();
-            services.AddSwaggerGen(c => c.SwaggerDoc(ApiConstants.API_VERSION, GetDocumentation()));
+            services.AddDbContext(_configuration);
+            services.AddSwaggerGen(c => c.SwaggerDoc(ApiConstants.API_VERSION, BuildDocumentation()));
             services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,7 +44,7 @@ namespace BusinessSvc.Api
             });
         }
 
-        public OpenApiInfo GetDocumentation()
+        public OpenApiInfo BuildDocumentation()
         {
             return new OpenApiInfo()
             {

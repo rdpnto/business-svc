@@ -7,5 +7,7 @@
         public const string API_VERSION = "v1";
         public const string DEV_NAME = "Rodrigo Pinto";
         public const string DEV_EMAIL = "rodrigops.mail@gmail.com";
+
+        public const string CONNECTION_STRING = "InMemory";
     }
 }
