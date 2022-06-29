@@ -1,4 +1,5 @@
 ﻿using BusinessSvc.Application.Commands.SendEmail;
+using BusinessSvc.Application.Queries.ListCustomers;
 using BusinessSvc.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace BusinessSvc.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [Produces("application/json")]
     public class CustomerController : ControllerBase
     {
@@ -20,9 +21,9 @@ namespace BusinessSvc.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<SendEmailCommandResponse> GetAllCustomers()
+        public async Task<ListCustomersCommandResponse> GetAllCustomers()
         {
-            return await _mediator.Send(new SendEmailCommand());
+            return await _mediator.Send(new ListCustomersCommand());
         }
     }
 }

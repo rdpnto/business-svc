@@ -2,26 +2,6 @@
 {
     internal static class BusinessSQL
     {
-        internal const string CREATE_CUSTOMERS =
-        @"
-            CREATE TABLE Customers (
-              customerId INTEGER PRIMARY KEY AUTOINCREMENT,
-              name TEXT UNIQUE,
-              email TEXT
-            )
-        ";
-
-        internal const string CREATE_ORDERS =
-        @"
-            CREATE TABLE Orders (
-              customerId INTEGER,
-              price DECIMAL,
-              createdAt TEXT,
-              status INTEGER,
-              FOREIGN KEY(customerId) REFERENCES Customers(customerId)
-            )
-        ";
-
         internal const string INSERT_CUSTOMER =
         @"
             INSERT INTO Customers(name, email) values(:name, :email)

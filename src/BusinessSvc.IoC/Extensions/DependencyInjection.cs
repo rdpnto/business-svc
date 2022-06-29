@@ -1,6 +1,7 @@
 ﻿using BusinessSvc.Domain.Constants;
 using BusinessSvc.Domain.Contracts;
 using BusinessSvc.Repository.Persistence;
+using BusinessSvc.Repository.Persistence.SQL;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,13 @@ namespace BusinessSvc.IoC.Extensions
                 var connection = new SqliteConnection(connStr);
 
                 connection.Open();
+                
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = EnvironmentSQL.CREATE_CUSTOMERS;
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = EnvironmentSQL.CREATE_ORDERS;
+                cmd.ExecuteNonQuery();
 
                 return connection;
             });

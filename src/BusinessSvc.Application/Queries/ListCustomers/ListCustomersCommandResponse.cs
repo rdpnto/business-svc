@@ -1,10 +1,10 @@
-﻿using System;
+﻿using BusinessSvc.Domain.Entities;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessSvc.Application.Queries.ListCustomers
 {
-    internal class ListCustomersCommandResponse
+    public class ListCustomersCommandResponse
     {
+        public IEnumerable<Customer> Customers { get; set; }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MediatR;
 
 namespace BusinessSvc.Application.Queries.ListCustomers
 {
-    internal class ListCustomersCommand
+    public class ListCustomersCommand : IRequest<ListCustomersCommandResponse>
     {
     }
 }

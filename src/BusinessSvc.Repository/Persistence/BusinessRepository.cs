@@ -31,23 +31,5 @@ namespace BusinessSvc.Repository.Persistence
         {
             return await _context.QueryAsync<Customer>(BusinessSQL.GET_ALL_CUSTOMERS);
         }
-
-        public async Task SetupContext()
-        {
-            await _context.ExecuteAsync(BusinessSQL.CREATE_CUSTOMERS);
-            await _context.ExecuteAsync(BusinessSQL.CREATE_ORDERS);
-
-            await _context.ExecuteAsync(BusinessSQL.INSERT_CUSTOMER, new 
-            { 
-                name = "Nome1",
-                email = "email"
-            });
-
-            await _context.ExecuteAsync(BusinessSQL.INSERT_CUSTOMER, new
-            {
-                name = "Nome2",
-                email = "email"
-            });
-        }
     }
 }
