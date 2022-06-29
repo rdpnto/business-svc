@@ -1,7 +1,7 @@
 ﻿using BusinessSvc.Domain.Entities;
 using MediatR;
 
-namespace BusinessSvc.Application.Commands.SendEmail
+namespace BusinessSvc.Application.Tests.Commands.SendEmail
 {
     public class SendEmailCommandTest : IRequest<SendEmailCommandResponseTest>
     {

@@ -3,7 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BusinessSvc.Application.Commands.SendEmail
+namespace BusinessSvc.Application.Tests.Commands.SendEmail
 {
     public class SendEmailCommandHandlerTest : IRequestHandler<SendEmailCommandTest, SendEmailCommandResponseTest>
     {

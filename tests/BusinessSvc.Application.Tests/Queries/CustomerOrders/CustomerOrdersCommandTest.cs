@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BusinessSvc.Application.Queries.CustomerOrders
+namespace BusinessSvc.Application.Tests.Queries.CustomerOrders
 {
     public class CustomerOrdersCommandTest
     {

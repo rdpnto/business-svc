@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BusinessSvc.Application.Commands.AddOrder
+namespace BusinessSvc.Application.Tests.Commands.AddOrder
 {
     public class AddOrderCommandTest
     {

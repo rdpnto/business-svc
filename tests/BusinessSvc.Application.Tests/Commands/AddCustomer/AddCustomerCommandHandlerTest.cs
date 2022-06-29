@@ -3,7 +3,7 @@ using BusinessSvc.Domain.Entities;
 using Moq;
 using Xunit;
 
-namespace BusinessSvc.Application.Commands.AddCustomer
+namespace BusinessSvc.Application.Tests.Commands.AddCustomer
 {
     public class AddCustomerCommandHandlerTest
     {
@@ -17,7 +17,7 @@ namespace BusinessSvc.Application.Commands.AddCustomer
         [Fact]
         public void ShouldPersistNewCustomer()
         {
-            var command = new AddCustomerCommand
+            var command = new AddCustomerCommand();
             
             _repository
                 .Setup(m => m.AddCustomer(It.IsAny<Customer>()))
