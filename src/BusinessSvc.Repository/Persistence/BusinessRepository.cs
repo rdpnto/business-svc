@@ -10,11 +10,11 @@ namespace BusinessSvc.Repository.Persistence
 {
     public class BusinessRepository : IBusinessRepository
     {
-        IDbConnection _connection;
+        IDbConnection _context;
 
         public BusinessRepository(IDbConnection context)
         {
-            _connection = context;
+            _context = context;
         }
 
         public void AddCustomer(Customer customer)
@@ -29,12 +29,27 @@ namespace BusinessSvc.Repository.Persistence
 
         public async Task<IEnumerable<Customer>> GetAllCustomers()
         {
-            return await _connection.QueryAsync<Customer>(BusinessSQL.GET_ALL_CUSTOMERS);
+            return await _context.QueryAsync<Customer>(BusinessSQL.GET_ALL_CUSTOMERS);
         }
 
         public async void SetupContext()
         {
-            await _connection.ExecuteAsync(BusinessSQL.SETUP_CONTEXT);
+            await _context.ExecuteAsync(BusinessSQL.CREATE_CUSTOMERS);
+            await _context.ExecuteAsync(BusinessSQL.CREATE_ORDERS);
+
+            await _context.ExecuteAsync(BusinessSQL.INSERT_CUSTOMER, new 
+            { 
+                name = "Nome1",
+                email = "email"
+            });
+
+            await _context.ExecuteAsync(BusinessSQL.INSERT_CUSTOMER, new
+            {
+                name = "Nome2",
+                email = "email"
+            });
+
+            var response = await _context.QueryAsync(BusinessSQL.GET_ALL_CUSTOMERS);
         }
     }
 }
