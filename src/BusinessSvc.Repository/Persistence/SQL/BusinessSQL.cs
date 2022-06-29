@@ -17,12 +17,17 @@
             SELECT * FROM Customers
         ";
 
-        internal const string GET_CUSTOMER =
+        internal const string GET_CUSTOMER_BY_NAME =
         @"
             SELECT * FROM Customers WHERE name = :name
         ";
 
-        internal const string GET_CUSTOMER_ORDERS =
+        internal const string GET_CUSTOMER_BY_ID =
+        @"
+            SELECT * FROM Customers WHERE customerId = :customerId
+        ";
+
+        internal const string GET_ORDERS_BY_CUSTOMER_ID =
         @"
             SELECT * FROM Orders WHERE customerId = :customerId
         ";

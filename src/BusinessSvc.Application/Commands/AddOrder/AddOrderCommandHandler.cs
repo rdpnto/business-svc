@@ -1,5 +1,6 @@
 ﻿using BusinessSvc.Domain.Contracts;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,6 +19,8 @@ namespace BusinessSvc.Application.Commands.AddOrder
         {
             int customerId = request.Customer.CustomerId != 0 ? request.Customer.CustomerId
                     : (await _repository.GetCustomerByName(request.Customer.Name)).CustomerId;
+
+            request.Order.CreatedAt = DateTime.Now;
 
             return new AddOrderCommandResponse()
             {

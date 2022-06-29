@@ -16,6 +16,6 @@ namespace BusinessSvc.Domain.Contracts
         
         Task<IEnumerable<Customer>> GetAllCustomers();
 
-        Task<IEnumerable<Order>> GetOrdersByCustomer(Customer customer);
+        Task<IEnumerable<Order>> GetOrdersByCustomerId(int customerId);
     }
 }

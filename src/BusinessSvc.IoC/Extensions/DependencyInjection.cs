@@ -18,7 +18,7 @@ namespace BusinessSvc.IoC.Extensions
 
         public static void AddDbContext(this IServiceCollection services, IConfiguration config)
         {
-            services.AddScoped<IDbConnection>(s =>
+            services.AddSingleton<IDbConnection>(s =>
             {
                 var connStr = config.GetConnectionString(ApiConstants.CONNECTION_STRING);
                 var connection = new SqliteConnection(connStr);

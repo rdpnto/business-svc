@@ -4,16 +4,16 @@ namespace BusinessSvc.Domain.Enums
 {
     public enum OrderStatus
     {
+        [Description("Order completed successfully")]
+        Completed = 0,
+
         [Description("Order awaiting payment confirmation")]
-        Pending = 0,
+        Pending = 1,
 
         [Description("Order on the way to the customer")]
-        Shipped = 1,
-
-        [Description("Order completed successfully")]
-        Completed = 10,
+        Shipped = 2,
 
         [Description("Order failed")]
-        Failed = 11
+        Failed = 3
     }
 }

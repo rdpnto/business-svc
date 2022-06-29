@@ -32,6 +32,10 @@ namespace BusinessSvc.Application.Tests.Commands.AddOrder
             var command = new AddOrderCommand(new Order());
 
             _repository
+                .Setup(m => m.GetCustomerByName(It.IsAny<string>()))
+                .ReturnsAsync(new Customer());
+
+            _repository
                 .Setup(m => m.AddOrder(It.IsAny<Order>(), It.IsAny<int>()))
                 .ReturnsAsync(true);
 

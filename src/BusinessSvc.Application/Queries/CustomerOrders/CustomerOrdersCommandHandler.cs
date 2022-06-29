@@ -23,7 +23,7 @@ namespace BusinessSvc.Application.Queries.CustomerOrders
             return new CustomerOrdersCommandResponse() 
             { 
                 Customer = customer,
-                Orders = await _repository.GetOrdersByCustomer(customer)
+                Orders = await _repository.GetOrdersByCustomerId(customer.CustomerId)
             };
 
         }

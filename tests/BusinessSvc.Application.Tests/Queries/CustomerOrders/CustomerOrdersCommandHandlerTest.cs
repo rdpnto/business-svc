@@ -36,7 +36,7 @@ namespace BusinessSvc.Application.Tests.Queries.CustomerOrders
                 .Setup(m => m.GetCustomerByName(It.IsAny<string>()))
                 .ReturnsAsync(new Customer());
             _repository
-                .Setup(m => m.GetOrdersByCustomer(It.IsAny<Customer>()))
+                .Setup(m => m.GetOrdersByCustomerId(It.IsAny<int>()))
                 .ReturnsAsync(new List<Order>());
 
             var response = await _handler.Handle(command, CancellationToken.None);
