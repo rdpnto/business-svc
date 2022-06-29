@@ -41,6 +41,17 @@ namespace BusinessSvc.Repository.Persistence
             return result == 1;
         }
 
+        public async Task<bool> UpdateOrderStatusById(Order order)
+        {
+            var result = await _context.ExecuteAsync(BusinessSQL.UPDATE_ORDER_STATUS_BY_ID, new
+            {
+                orderId = order.OrderId,
+                status = order.Status
+            });
+
+            return result == 1;
+        }
+
         public async Task<IEnumerable<Customer>> GetAllCustomers()
         {
             var response = await _context.QueryAsync<Customer>(BusinessSQL.GET_ALL_CUSTOMERS);

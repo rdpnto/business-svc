@@ -17,7 +17,7 @@ namespace BusinessSvc.Application.Commands.AddOrder
 
         public async Task<AddOrderCommandResponse> Handle(AddOrderCommand request, CancellationToken cancellationToken)
         {
-            int customerId = request.Customer.CustomerId;
+            request.Order.CreatedAt = DateTime.Now;
 
             if (request.Customer.CustomerId == 0)
             {
@@ -25,16 +25,14 @@ namespace BusinessSvc.Application.Commands.AddOrder
 
                 if (customer == null) return new AddOrderCommandResponse() { Message = "Customer name not found" };
 
-                customerId = customer.CustomerId;
+                request.Customer.CustomerId = customer.CustomerId;
             }
 
             try
             {
-                request.Order.CreatedAt = DateTime.Now;
-
                 return new AddOrderCommandResponse()
                 {
-                    Success = await _repository.AddOrder(request.Order, customerId),
+                    Success = await _repository.AddOrder(request.Order, request.Customer.CustomerId),
                     Message = "Order created"
                 };
             }

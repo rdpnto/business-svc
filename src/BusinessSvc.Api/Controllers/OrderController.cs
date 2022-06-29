@@ -1,4 +1,5 @@
 ﻿using BusinessSvc.Application.Commands.AddOrder;
+using BusinessSvc.Application.Commands.UpdateOrderStatus;
 using BusinessSvc.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -35,5 +36,15 @@ namespace BusinessSvc.Api.Controllers
 
             return await _mediator.Send(command);
         }
+
+        [HttpPatch]
+        [Route("{orderId:int}")]
+        public async Task<UpdateOrderStatusCommandResponse> UpdateOrderStatus([FromBody] Order order, int orderId)
+        {
+            var command = new UpdateOrderStatusCommand(orderId, order.Status);
+
+            return await _mediator.Send(command);
+        }
+
     }
 }

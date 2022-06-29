@@ -14,6 +14,7 @@
         public const string CREATE_ORDERS =
         @"
             CREATE TABLE Orders (
+              orderId INTEGER PRIMARY KEY AUTOINCREMENT,
               customerId INTEGER,
               price DECIMAL,
               createdAt TEXT,

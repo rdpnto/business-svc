@@ -9,7 +9,7 @@
 
         internal const string INSERT_ORDER =
         @"
-            INSERT INTO Orders values (:customerId, :price, :createdAt, :status)
+            INSERT INTO Orders(customerId, price, createdAt, status) values (:customerId, :price, :createdAt, :status)
         ";
 
         internal const string GET_ALL_CUSTOMERS =
@@ -32,10 +32,10 @@
             SELECT * FROM Orders WHERE customerId = :customerId
         ";
 
-        internal const string UPDATE_ORDER_STATUS =
+        internal const string UPDATE_ORDER_STATUS_BY_ID =
         @"
             UPDATE Orders SET status = :status
-            WHERE customerId = :customerId
+            WHERE orderId = :orderId
         ";
     }
 }

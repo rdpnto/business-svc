@@ -10,6 +10,8 @@ namespace BusinessSvc.Domain.Contracts
 
         Task<bool> AddCustomer(Customer customer);
 
+        Task<bool> UpdateOrderStatusById(Order order);
+
         Task<Customer> GetCustomerById(int id);
 
         Task<Customer> GetCustomerByName(string name);
