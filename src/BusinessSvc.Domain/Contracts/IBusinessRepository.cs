@@ -6,9 +6,9 @@ namespace BusinessSvc.Domain.Contracts
 {
     public interface IBusinessRepository
     {
-        void AddOrder(Order order, Customer customer);
+        Task<bool> AddOrder(Order order);
 
-        void AddCustomer(Customer customer);
+        Task<bool> AddCustomer(Customer customer);
 
         Task<IEnumerable<Customer>> GetAllCustomers();
     }

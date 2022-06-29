@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessSvc.Application.Queries.ListCustomers
 {
-    internal class ListCustomersCommandResponseTest
+    public class ListCustomersCommandResponseTest
     {
     }
 }

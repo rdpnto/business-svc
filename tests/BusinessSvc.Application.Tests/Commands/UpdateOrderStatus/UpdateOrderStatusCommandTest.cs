@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessSvc.Application.Commands.UpdateOrderStatus
 {
-    internal class UpdateOrderStatusCommandTest
+    public class UpdateOrderStatusCommandTest
     {
     }
 }

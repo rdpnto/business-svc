@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessSvc.Application.Commands.AddCustomer
 {
-    internal class AddCustomerCommandTest
+    public class AddCustomerCommandTest
     {
     }
 }

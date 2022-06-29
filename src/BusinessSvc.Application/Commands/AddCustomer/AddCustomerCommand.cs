@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BusinessSvc.Application.Commands.AddCustomer
+﻿namespace BusinessSvc.Application.Commands.AddCustomer
 {
-    internal class AddCustomerCommand
+    public class AddCustomerCommand
     {
     }
 }
