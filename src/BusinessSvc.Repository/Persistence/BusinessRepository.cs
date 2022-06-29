@@ -32,7 +32,7 @@ namespace BusinessSvc.Repository.Persistence
             return await _context.QueryAsync<Customer>(BusinessSQL.GET_ALL_CUSTOMERS);
         }
 
-        public async void SetupContext()
+        public async Task SetupContext()
         {
             await _context.ExecuteAsync(BusinessSQL.CREATE_CUSTOMERS);
             await _context.ExecuteAsync(BusinessSQL.CREATE_ORDERS);
@@ -48,8 +48,6 @@ namespace BusinessSvc.Repository.Persistence
                 name = "Nome2",
                 email = "email"
             });
-
-            var response = await _context.QueryAsync(BusinessSQL.GET_ALL_CUSTOMERS);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace BusinessSvc.Domain.Contracts
 {
     public interface IBusinessRepository
     {
-        void SetupContext();
+        Task SetupContext();
 
         void AddOrder(Order order, Customer customer);
 

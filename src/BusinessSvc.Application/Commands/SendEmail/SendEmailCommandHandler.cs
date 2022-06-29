@@ -1,6 +1,5 @@
 ﻿using BusinessSvc.Domain.Contracts;
 using MediatR;
-using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,13 +14,14 @@ namespace BusinessSvc.Application.Commands.SendEmail
             _repository = repository;
         }
 
-        public Task<SendEmailCommandResponse> Handle(SendEmailCommand request, CancellationToken cancellationToken)
+        public async Task<SendEmailCommandResponse> Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
-            _repository.SetupContext();
+            await _repository.SetupContext();
 
-            var customers = _repository.GetAllCustomers();
-            
-            return Task.FromResult(new SendEmailCommandResponse() { EmailSent = true });
+            return new SendEmailCommandResponse()
+            {
+                Customers = await _repository.GetAllCustomers()
+            };
         }
     }
 }

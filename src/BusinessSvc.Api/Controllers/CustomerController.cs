@@ -20,15 +20,9 @@ namespace BusinessSvc.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<SendEmailCommandResponse> Get()
+        public async Task<SendEmailCommandResponse> GetAllCustomers()
         {
-            var command = new SendEmailCommand()
-            {
-                Customer = new Customer(),
-                Order = new Order()
-            };
-            
-            return await _mediator.Send(command);
+            return await _mediator.Send(new SendEmailCommand());
         }
     }
 }

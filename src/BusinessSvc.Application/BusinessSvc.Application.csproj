@@ -12,8 +12,4 @@
     <ProjectReference Include="..\BusinessSvc.Domain\BusinessSvc.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
 </Project>
