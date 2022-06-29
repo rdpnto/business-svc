@@ -1,16 +1,34 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BusinessSvc.Application.Commands.SendEmail;
+using BusinessSvc.Domain.Entities;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace BusinessSvc.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Produces("application/json")]
     public class CustomerController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        readonly IMediator _mediator;
+
+        public CustomerController(IMediator mediator)
         {
-            return Ok("ok");
+            _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<SendEmailCommandResponse> Get()
+        {
+            var command = new SendEmailCommand()
+            {
+                Customer = new Customer(),
+                Order = new Order()
+            };
+            
+            return await _mediator.Send(command);
         }
     }
 }

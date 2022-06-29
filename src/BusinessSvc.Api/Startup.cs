@@ -1,3 +1,4 @@
+using BusinessSvc.Application.Commands.SendEmail;
 using BusinessSvc.Domain.Constants;
 using BusinessSvc.IoC.Extensions;
 using MediatR;
@@ -21,7 +22,8 @@ namespace BusinessSvc.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMediatR(typeof(object));
+            services.AddMediatR(typeof(SendEmailCommand).Assembly);
+            services.ConfigureDependencyInjection();
             services.AddDbContext(_configuration);
             services.AddSwaggerGen(c => c.SwaggerDoc(ApiConstants.API_VERSION, BuildDocumentation()));
             services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());

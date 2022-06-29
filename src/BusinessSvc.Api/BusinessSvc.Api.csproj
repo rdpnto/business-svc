@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BusinessSvc.Application\BusinessSvc.Application.csproj" />
     <ProjectReference Include="..\BusinessSvc.Domain\BusinessSvc.Domain.csproj" />
     <ProjectReference Include="..\BusinessSvc.IoC\BusinessSvc.IoC.csproj" />
   </ItemGroup>
