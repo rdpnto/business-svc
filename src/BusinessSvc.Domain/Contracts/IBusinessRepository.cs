@@ -6,10 +6,16 @@ namespace BusinessSvc.Domain.Contracts
 {
     public interface IBusinessRepository
     {
-        Task<bool> AddOrder(Order order);
+        Task<bool> AddOrder(Order order, int customerId);
 
         Task<bool> AddCustomer(Customer customer);
 
+        Task<Customer> GetCustomerById(int id);
+
+        Task<Customer> GetCustomerByName(string name);
+        
         Task<IEnumerable<Customer>> GetAllCustomers();
+
+        Task<IEnumerable<Order>> GetOrdersByCustomer(Customer customer);
     }
 }

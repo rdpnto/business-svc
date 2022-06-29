@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BusinessSvc.Application.Commands.AddCustomer
+﻿namespace BusinessSvc.Application.Commands.AddCustomer
 {
     public class AddCustomerCommandResponse
     {
+        public bool Success { get; set; }
     }
 }
