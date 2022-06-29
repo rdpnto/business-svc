@@ -1,5 +1,6 @@
 ﻿using BusinessSvc.Domain.Contracts;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,15 +17,24 @@ namespace BusinessSvc.Application.Queries.CustomerOrders
 
         public async Task<CustomerOrdersCommandResponse> Handle(CustomerOrdersCommand request, CancellationToken cancellationToken)
         {
-            var customer = request.Customer.CustomerId == 0
-                ? await _repository.GetCustomerByName(request.Customer.Name)
-                : await _repository.GetCustomerById(request.Customer.CustomerId);
+            try
+            {
+                var customer = request.Customer.CustomerId == 0
+                    ? await _repository.GetCustomerByName(request.Customer.Name)
+                    : await _repository.GetCustomerById(request.Customer.CustomerId);
 
-            return new CustomerOrdersCommandResponse() 
-            { 
-                Customer = customer,
-                Orders = await _repository.GetOrdersByCustomerId(customer.CustomerId)
-            };
+                if (customer == null) return new CustomerOrdersCommandResponse();
+
+                return new CustomerOrdersCommandResponse() 
+                { 
+                    Customer = customer,
+                    Orders = await _repository.GetOrdersByCustomerId(customer.CustomerId)
+                };
+            }
+            catch (Exception)
+            {
+                return new CustomerOrdersCommandResponse();
+            }
 
         }
     }

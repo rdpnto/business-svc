@@ -17,15 +17,32 @@ namespace BusinessSvc.Application.Commands.AddOrder
 
         public async Task<AddOrderCommandResponse> Handle(AddOrderCommand request, CancellationToken cancellationToken)
         {
-            int customerId = request.Customer.CustomerId != 0 ? request.Customer.CustomerId
-                    : (await _repository.GetCustomerByName(request.Customer.Name)).CustomerId;
+            int customerId = request.Customer.CustomerId;
 
-            request.Order.CreatedAt = DateTime.Now;
-
-            return new AddOrderCommandResponse()
+            if (request.Customer.CustomerId == 0)
             {
-                Success = await _repository.AddOrder(request.Order, customerId)
-            };
+                var customer = await _repository.GetCustomerByName(request.Customer.Name);
+
+                if (customer == null) return new AddOrderCommandResponse() { Message = "Customer name not found" };
+
+                customerId = customer.CustomerId;
+            }
+
+            try
+            {
+                request.Order.CreatedAt = DateTime.Now;
+
+                return new AddOrderCommandResponse()
+                {
+                    Success = await _repository.AddOrder(request.Order, customerId),
+                    Message = "Order created"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new AddOrderCommandResponse() { Message = $"Unable to create order. {ex.Message}" };
+            }
+
         }
     }
 }

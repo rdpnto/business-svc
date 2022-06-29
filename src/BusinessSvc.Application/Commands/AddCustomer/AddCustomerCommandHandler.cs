@@ -1,5 +1,6 @@
 ﻿using BusinessSvc.Domain.Contracts;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,10 +17,22 @@ namespace BusinessSvc.Application.Commands.AddCustomer
 
         public async Task<AddCustomerCommandResponse> Handle(AddCustomerCommand request, CancellationToken cancellationToken)
         {
-            return new AddCustomerCommandResponse() 
-            { 
-                Success = await _repository.AddCustomer(request.Customer)
-            };
+            try
+            {
+                return new AddCustomerCommandResponse() 
+                { 
+                    Success = await _repository.AddCustomer(request.Customer),
+                    Message = "Customer created"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new AddCustomerCommandResponse()
+                {
+                    Success = false,
+                    Message = $"Unable to create customer. {ex.Message}"
+                };
+            }
         }
     }
 }
