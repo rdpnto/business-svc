@@ -2,25 +2,25 @@
 
 **BusinessApi**
 
-# Descrição
+# DescriÃ§Ã£o
 
-A seguinte API foi desenvolvida como solução para um desafio técnico, proposto a avaliar habilidades envolvidas na criação de um serviço Rest em .Net. O desafio envolve a implementação de funcionalidades que devem girar em torno dos domínios `Customers` e `Orders`. 
-As funcionalidades são expostas em dois Controllers principais, respectivos ao domínio, com endpoints específicos.
-Como solução para persistencia, foi utilizado SQLite no modo in-memory, facilitando integrações de dados.
+A seguinte API foi desenvolvida como soluÃ§Ã£o para um desafio tÃ©cnico, proposto a avaliar habilidades envolvidas na criaÃ§Ã£o de um serviÃ§o Rest em .Net. O desafio envolve a implementaÃ§Ã£o de funcionalidades que devem girar em torno dos domÃ­nios `Customers` e `Orders`. 
+As funcionalidades sÃ£o expostas em dois Controllers principais, respectivos ao domÃ­nio, com endpoints especÃ­ficos.
+Como soluÃ§Ã£o para persistencia, foi utilizado SQLite no modo in-memory, facilitando integraÃ§Ãµes de dados.
 
 
-# Detalhes e Definições do Projeto
+# Detalhes e DefiniÃ§Ãµes do Projeto
 
 ## :hammer: Check-List de Desenvolvimento
 
 <strong>Desenvolvimento</strong>
 
-- [x] Domínio
+- [x] DomÃ­nio
 - [x] Desenvolvimento
-- [x] Estrutura Relacional
-- [x] Testes Unitários
+- [x] IntegraÃ§Ã£o com banco de dados
+- [x] Testes UnitÃ¡rios
 
-## Recursos Disponíveis na API
+## Recursos DisponÃ­veis na API
 
 ### Customer
 
@@ -57,30 +57,28 @@ Como solução para persistencia, foi utilizado SQLite no modo in-memory, facilita
 
 ## Estrutura relacional
 
-A seguinte estrutura foi criada para o domínio:
+A seguinte estrutura foi criada para o domÃ­nio:
 
-CUSTOMERS
----------
-customerId	- int		- chave primária autoincrementada
-name		- string	- unique
-email		- string
+CUSTOMERS <br>
+customerId	- int		- chave primÃ¡ria autoincrementada <br>
+name		- string	- unique <br>
+email		- string <br>
 
-ORDERS
-------
-orderId		- int		- chave primária autoincrementada
-customerId	- int		- foreign key apontada para CUSTOMERS.customerId
-price		- decimal
-createdAt	- string
-status		- int
+ORDERS <br>
+orderId		- int		- chave primÃ¡ria autoincrementada <br>
+customerId	- int		- foreign key apontada para CUSTOMERS.(customerId) <br>
+price		- decimal <br>
+createdAt	- string <br>
+status		- int <br>
 
-## Técnicas e tecnologias utilizadas
+## TÃ©cnicas e tecnologias utilizadas
 
 - ``.Net Core 3.1``
 - ``Mediator``
 - ``TDD``
 - ``Clean Architecture with CQRS``
 
-### Bibliotecas Públicas
+### Bibliotecas PÃºblicas
 
 - ``Dapper``												``Version: 2.0.123``
 - ``MediatR``												``Version: 10.0.1``
