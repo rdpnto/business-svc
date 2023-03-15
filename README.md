@@ -24,33 +24,33 @@ Como solução para persistencia, foi utilizado SQLite no modo in-memory, facili
 
 ### Customer
 
-- `Cria um novo Customer`: `[POST] /api/v1/Customer`
+- `[POST] /api/v1/Customer`: Cria um novo Customer
 	Contrato: {
 	  "name": string,
 	  "email": string
 	}
 
-- `Retorna todos os Customers criados`: `[GET] /api/v1/Customer`
+- `[GET] /api/v1/Customer`: Retorna todos os Customers criados
 
-- `Busca um Customer por Id`: `[GET] /api/v1/Customer/{id}`
+- `[GET] /api/v1/Customer/{id}`: Busca um Customer por Id
 
-- `Busca um Customer por Nome`: `[GET] /api/v1/Customer/{name}`
+- `[GET] /api/v1/Customer/{name}`: Busca um Customer por Nome
 
 ### Order
 
-- `Cria um novo Order atrelado ao customerId informado no PATH`: `[POST] /api/v1/Order/{id}`
+- `[POST] /api/v1/Order/{id}`: Cria um novo Order atrelado ao customerId informado no PATH
 	Contrato: {
 	  "price": decimal,
 	  "status": enum
 	}
 
-- `Cria um novo Order atrelado ao nome do Costumer informado`: `[POST] /api/v1/Order/{name}`
+- `[POST] /api/v1/Order/{name}`: Cria um novo Order atrelado ao nome do Costumer informado
 	Contrato: {
 	  "price": decimal,
 	  "status": enum
 	}
 
-- `Atualiza o status de um Order baseado no orderId informado`: `[PATCH] /api/v1/Order/{orderId}`
+- `[PATCH] /api/v1/Order/{orderId}`: Atualiza o status de um Order baseado no orderId informado
 	Contrato: {
 	  "status": enum
 	}
